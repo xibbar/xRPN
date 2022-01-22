@@ -52,10 +52,10 @@
 		536B3D242779013200394DC4 /* MyRPN */ = {
 			isa = PBXGroup;
 			children = (
+				536B3D2E2779013C00394DC4 /* Info.plist */,
 				536B3D252779013200394DC4 /* MyRPNApp.swift */,
 				536B3D272779013200394DC4 /* ContentView.swift */,
 				536B3D292779013C00394DC4 /* Assets.xcassets */,
-				536B3D2E2779013C00394DC4 /* Info.plist */,
 				536B3D2B2779013C00394DC4 /* Preview Content */,
 			);
 			path = MyRPN;
@@ -277,6 +277,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				"OTHER_CODE_SIGN_FLAGS[sdk=*]" = "--generate-entitlement-der";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.rabbix.MyRPN;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -299,6 +300,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				"OTHER_CODE_SIGN_FLAGS[sdk=*]" = "--generate-entitlement-der";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.rabbix.MyRPN;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
