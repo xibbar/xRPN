@@ -25,12 +25,14 @@ struct ContentView: View {
                 MyEditButton().environmentObject(rpnData)
                     .padding()
             }
-            DisplayView()
-                .environmentObject(rpnData)
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
+            Spacer()
+            VStack(spacing: 0) {
+                DisplayView()
+                    .environmentObject(rpnData)
+                KeyboardView().environmentObject(rpnData)
+            }
             //常にeditMode
             //.environment(\.editMode, .constant(EditMode.active))
-            KeyboardView().environmentObject(rpnData)
         }
     }
 }
