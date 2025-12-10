@@ -25,8 +25,9 @@ struct ContentView: View {
                 MyEditButton().environmentObject(rpnData)
                     .padding()
             }
-            Spacer()
-            DisplayView().environmentObject(rpnData)
+            DisplayView()
+                .environmentObject(rpnData)
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
             //常にeditMode
             //.environment(\.editMode, .constant(EditMode.active))
             KeyboardView().environmentObject(rpnData)
