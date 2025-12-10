@@ -17,6 +17,20 @@ struct DisplayView: View {
         formatter.locale = Locale(identifier: "ja_JP")
         formatter.maximumFractionDigits = 7
     }
+    private let rowHeight: CGFloat = 56
+    private var estimatedListHeight: CGFloat {
+        let visibleRowCount: Int
+        if rpnData.stackNumbers.isEmpty && rpnData.enterringString == "" {
+            visibleRowCount = 1
+        } else {
+            visibleRowCount = rpnData.stackNumbers.count + (rpnData.enterringString.isEmpty ? 0 : 1)
+        }
+
+        let idealHeight = CGFloat(visibleRowCount) * rowHeight
+        let minimumHeight = rowHeight
+        let maximumHeight: CGFloat = 320
+        return min(max(idealHeight, minimumHeight), maximumHeight)
+    }
     var body: some View {
         ScrollViewReader { proxy in
             List {
@@ -40,6 +54,7 @@ struct DisplayView: View {
                     .id("bottom")
             }
             .listStyle(.plain)
+            .frame(height: estimatedListHeight, alignment: .bottom)
             .onAppear {
                 scrollToBottom(proxy: proxy)
             }
