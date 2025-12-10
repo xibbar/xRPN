@@ -1,0 +1,17 @@
+# Xcode
+DerivedData/
+build/
+*.xcuserstate
+xcuserdata/
+
+# Swift Package Manager
+.build/
+
+# CocoaPods（使っていれば）
+Pods/
+
+# Carthage（使っていれば）
+Carthage/
+
+# その他
+.DS_Store
