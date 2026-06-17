@@ -7,19 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		531DFBDA2A7DEFE2002D5726 /* DisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531DFBD92A7DEFE2002D5726 /* DisplayView.swift */; };
+		5345D7EF27B64D3300D464F4 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5345D7EE27B64D3300D464F4 /* KeyboardView.swift */; };
 		536B3D262779013200394DC4 /* MyRPNApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536B3D252779013200394DC4 /* MyRPNApp.swift */; };
 		536B3D282779013200394DC4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536B3D272779013200394DC4 /* ContentView.swift */; };
 		536B3D2A2779013C00394DC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 536B3D292779013C00394DC4 /* Assets.xcassets */; };
 		536B3D2D2779013C00394DC4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 536B3D2C2779013C00394DC4 /* Preview Assets.xcassets */; };
+		5395DB9127A2741C005BAB15 /* RPNData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5395DB9027A2741C005BAB15 /* RPNData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		531DFBD92A7DEFE2002D5726 /* DisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayView.swift; sourceTree = "<group>"; };
+		5345D7EE27B64D3300D464F4 /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 		536B3D222779013200394DC4 /* MyRPN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyRPN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		536B3D252779013200394DC4 /* MyRPNApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRPNApp.swift; sourceTree = "<group>"; };
 		536B3D272779013200394DC4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		536B3D292779013C00394DC4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		536B3D2C2779013C00394DC4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		536B3D2E2779013C00394DC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5395DB9027A2741C005BAB15 /* RPNData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPNData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +61,9 @@
 				536B3D2E2779013C00394DC4 /* Info.plist */,
 				536B3D252779013200394DC4 /* MyRPNApp.swift */,
 				536B3D272779013200394DC4 /* ContentView.swift */,
+				531DFBD92A7DEFE2002D5726 /* DisplayView.swift */,
+				5395DB9027A2741C005BAB15 /* RPNData.swift */,
+				5345D7EE27B64D3300D464F4 /* KeyboardView.swift */,
 				536B3D292779013C00394DC4 /* Assets.xcassets */,
 				536B3D2B2779013C00394DC4 /* Preview Content */,
 			);
@@ -139,6 +148,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				536B3D282779013200394DC4 /* ContentView.swift in Sources */,
+				5395DB9127A2741C005BAB15 /* RPNData.swift in Sources */,
+				5345D7EF27B64D3300D464F4 /* KeyboardView.swift in Sources */,
+				531DFBDA2A7DEFE2002D5726 /* DisplayView.swift in Sources */,
 				536B3D262779013200394DC4 /* MyRPNApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
