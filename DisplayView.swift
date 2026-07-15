@@ -17,40 +17,58 @@ struct DisplayView: View {
         formatter.locale = Locale(identifier: "ja_JP")
         formatter.maximumFractionDigits = 7
     }
+    private let rowHeight: CGFloat = 56
+    private var estimatedListHeight: CGFloat {
+        let visibleRowCount: Int
+        if rpnData.stackNumbers.isEmpty && rpnData.enterringString == "" {
+            visibleRowCount = 1
+        } else {
+            visibleRowCount = rpnData.stackNumbers.count + (rpnData.enterringString.isEmpty ? 0 : 1)
+        }
+
+        let idealHeight = CGFloat(visibleRowCount) * rowHeight
+        let minimumHeight = rowHeight
+        let maximumHeight: CGFloat = 320
+        return min(max(idealHeight, minimumHeight), maximumHeight)
+    }
     var body: some View {
-        List {
-            if rpnData.stackNumbers.count == 0 && rpnData.enterringString == "" {
-                Text("0")
-                    .font(.largeTitle)
-                    .frame(maxWidth: .infinity, alignment: .trailing)
-                    .foregroundColor(.blue)
-                    .rotationEffect(Angle(degrees: 180))
-
-                
-
-            } else if rpnData.enterringString != "" {
-                Text(rpnData.enterringStringWithDelimiter()).font(.largeTitle)
-                    .frame(maxWidth: .infinity, alignment: .trailing)
-                    .foregroundColor(Color.orange)
-                    .rotationEffect(Angle(degrees: 180))
+        ScrollViewReader { proxy in
+            List {
+                if rpnData.stackNumbers.count == 0 && rpnData.enterringString == "" {
+                    Text("0")
+                        .font(.largeTitle)
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                        .foregroundColor(.blue)
+                } else if rpnData.enterringString != "" {
+                    Text(rpnData.enterringStringWithDelimiter()).font(.largeTitle)
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                        .foregroundColor(Color.orange)
+                }
+                ForEach(Array(rpnData.stackNumbers.enumerated()), id: \.offset) { index, number in
+                    self.buildView(stackNumbers: rpnData.stackNumbers, index: index)
+                }
+                .onMove(perform: move)
+                .onDelete(perform: delete)
+                Color.clear
+                    .frame(height: 0)
+                    .id("bottom")
             }
-            ForEach(Array(rpnData.stackNumbers.enumerated()), id: \.offset) { index, number in
-                self.buildView(stackNumbers: rpnData.stackNumbers, index: index)
+            .listStyle(.plain)
+            .frame(height: estimatedListHeight, alignment: .bottom)
+            .onAppear {
+                scrollToBottom(proxy: proxy)
             }
-            .onMove(perform: move)
-            .onDelete(perform: delete)
-            .rotationEffect(Angle(degrees: 180))
-//            .onLongPressGesture{
-//                print("Long Tapped.")
-//                toggleEditMode()
-//            }
+            .onChange(of: rpnData.stackNumbers) { _ in
+                scrollToBottom(proxy: proxy)
+            }
+            .onChange(of: rpnData.enterringString) { _ in
+                scrollToBottom(proxy: proxy)
+            }
+            .onTapGesture(count: 2){
+                print("Long Tapped.")
+                toggleEditMode()
+            }
         }
-        .onTapGesture(count: 2){
-            print("Long Tapped.")
-            toggleEditMode()
-        }
-        .rotationEffect(Angle(degrees: 180))
-
     }
     func toggleEditMode(){
         if editMode?.wrappedValue.isEditing == true {
@@ -93,6 +111,14 @@ struct DisplayView: View {
     }
     func decimalDisplayString(number: Decimal) -> String {
         return formatter.string(from: number as NSDecimalNumber)!
+    }
+
+    private func scrollToBottom(proxy: ScrollViewProxy) {
+        DispatchQueue.main.async {
+            withAnimation {
+                proxy.scrollTo("bottom", anchor: .bottom)
+            }
+        }
     }
 }
 

@@ -26,10 +26,13 @@ struct ContentView: View {
                     .padding()
             }
             Spacer()
-            DisplayView().environmentObject(rpnData)
+            VStack(spacing: 0) {
+                DisplayView()
+                    .environmentObject(rpnData)
+                KeyboardView().environmentObject(rpnData)
+            }
             //常にeditMode
             //.environment(\.editMode, .constant(EditMode.active))
-            KeyboardView().environmentObject(rpnData)
         }
     }
 }
